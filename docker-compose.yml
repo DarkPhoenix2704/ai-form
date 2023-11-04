@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  api-db:
+    image: postgres
+    ports:
+      - 5433:5432
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${API_DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${API_DATABASE_PASSWORD}
+      - POSTGRES_DB=${API_DATABASE_NAME}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${API_DATABASE_USERNAME}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_network
+networks:
+  app_network:
+    driver: bridge
