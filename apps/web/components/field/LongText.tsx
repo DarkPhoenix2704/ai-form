@@ -1,6 +1,7 @@
 interface LongTextProps {
+  placeholder: string;
   editEnabled: boolean;
-  value: string;
+  value?: string;
   isRequired?: boolean;
   onChange: (value: string) => void;
 }
@@ -8,11 +9,13 @@ interface LongTextProps {
 const LongText = ({
   editEnabled,
   value,
+  placeholder,
   isRequired,
   onChange,
 }: LongTextProps) => {
   return editEnabled ? (
     <textarea
+      placeholder={placeholder}
       className="border-2 border-gray-300 hover:border-[#bfbfbf] focus:outline-blue-500 px-2 py-1 rounded-md"
       required={isRequired}
       value={value}

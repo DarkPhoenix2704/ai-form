@@ -1,8 +1,9 @@
-import Select from "react-select";
+import Select from 'react-select';
 
 interface SingleSelectProps {
   editEnabled: boolean;
-  value: string;
+  placeholder: string;
+  value?: string;
   options: string[];
   onChange: (value: string) => void;
 }
@@ -10,15 +11,19 @@ interface SingleSelectProps {
 const SingleSelect = ({
   editEnabled,
   value,
+  placeholder,
   onChange,
   options,
 }: SingleSelectProps) => {
   return editEnabled ? (
     <Select
+      placeholder={placeholder}
       className="w-[12.5rem] border-2 rounded-md"
       closeMenuOnScroll
       closeMenuOnSelect
-      onChange={(e) => onChange((e && typeof e === "object" && e.value) ?? "")}
+      onChange={(e) =>
+        onChange((e && typeof e === 'object' ? e.value : '') ?? '')
+      }
       options={options.map((option) => ({ value: option, label: option }))}
     />
   ) : (

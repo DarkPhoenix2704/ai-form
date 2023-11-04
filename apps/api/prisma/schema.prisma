@@ -69,6 +69,7 @@ model Field {
   title String
   label String?
   placeholder String?
+  options String?
 
   required Boolean @default(false)
 

@@ -1,6 +1,6 @@
 interface CheckboxProps {
   editEnabled: boolean;
-  value: boolean;
+  value?: boolean;
   onChange: (value: boolean) => void;
 }
 
