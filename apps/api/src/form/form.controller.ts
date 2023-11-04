@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 
 @Controller('form')
-export class FormController {}
+export class FormController {
+    @Post()
+    async createForm() {
+        
+    }
+}
