@@ -25,6 +25,7 @@ model User {
   
   isVerified Boolean @default(false)
   providerAccounts Account[]
+  forms Form[]
 }
 
 model Account {
@@ -42,4 +43,65 @@ model Account {
   updatedAt DateTime @updatedAt
 
   @@unique([provider, providerAccountId], name: "verify_provider_account")
+}
+
+
+model Form {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [uid])
+
+  title String
+  description String?
+
+  fields Field[]
+  responses Response[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Field {
+  id     String @id @default(cuid())
+  formId String
+  form   Form   @relation(fields: [formId], references: [id])
+
+  title String
+  label String?
+  placeholder String?
+
+  required Boolean @default(false)
+
+  type FieldType
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Response {
+  id     String @id @default(cuid())
+  formId String
+  form   Form   @relation(fields: [formId], references: [id])
+
+  data Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+enum FieldType {
+  SingleLineText
+  LongText
+  SingleSelect
+  MultiSelect
+  Rating
+  Checkbox
+  Date
+  Currency
+  Number
+  Email
+  URL
+  PhoneNumber
+  Attachment
 }
