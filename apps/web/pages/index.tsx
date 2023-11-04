@@ -10,6 +10,7 @@ import {
 } from '@nextui-org/react';
 import { MdOutlineEdit } from 'react-icons/md';
 import { SlOptionsVertical } from 'react-icons/sl';
+import { NextPageWithLayout } from './_app';
 const forms = [
   {
     name: 'Form 1',
@@ -29,7 +30,7 @@ const forms = [
   },
 ];
 
-const IndexPage = () => {
+const IndexPage: NextPageWithLayout = () => {
   return (
     <div className="flex flex-col px-16 py-16 w-full h-full">
       <div className="flex w-full gap-1">
@@ -74,5 +75,7 @@ const IndexPage = () => {
     </div>
   );
 };
+
+IndexPage.requiresAuth = true;
 
 export default IndexPage;
