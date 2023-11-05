@@ -11,6 +11,8 @@ export class FormService {
             const forms = await this.prismaService.form.findMany({
                 where: {
                     userId: uid
+                }, orderBy: {
+                    createdAt: 'desc'
                 }
             });
             return forms;
@@ -38,11 +40,10 @@ export class FormService {
     }
 
 
-    async getForm({userId, formId}: {userId: string; formId: string}) {
+    async getForm({formId}: { formId: string}) {
         try {
             const form = await this.prismaService.form.findUnique({
                 where: {
-                    userId: userId,
                     id: formId
                 },
                 select: {
@@ -56,6 +57,9 @@ export class FormService {
                             required: true,
                             placeholder: true,
                             id: true
+                        },
+                        orderBy: {
+                            createdAt: 'asc'
                         }
                     }
                 }
@@ -89,8 +93,8 @@ export class FormService {
                     placeholder: fieldInfo.placeholder,
                     label: fieldInfo.label,
                     required: fieldInfo.required ?? false,
-                    options: fieldInfo.options.join(',')
-                }
+                    options: fieldInfo.options ? fieldInfo.options.join(','): ''
+                },
             })
         } else {
             return await this.prismaService.field.create({
@@ -106,6 +110,88 @@ export class FormService {
                 }
             })
         }
+    }
+
+    async submitForm({formId, body}: {formId: string, body: any}) {
+        const form = await this.prismaService.form.findUnique({
+            where: {
+                id: formId
+            },
+            select: {
+                id: true
+            }
+        })
+
+        if(!form) return UnauthorizedException
+
+        const fields = await this.prismaService.field.findMany({
+            where: {
+                formId: formId
+            },
+            select: {
+                id: true,
+                type: true,
+                required: true,
+                options: true
+            }
+        })
+
+        const bodyKeys = Object.keys(body);
+
+        const missingRequiredFields = fields.filter(field => field.required && !bodyKeys.includes(field.id));
+
+        if(missingRequiredFields.length > 0) {
+            return {
+                error: 'Missing required fields',
+                missingFields: missingRequiredFields.map(field => field.id)
+            }
+        }
+
+        const invalidFields = fields.filter(field => {
+            if(!bodyKeys.includes(field.id)) return false;
+            const value = body[field.id];
+            if(field.type === FieldType.Checkbox) {
+                if(typeof value !== 'boolean') return true;
+            } else if(field.type === FieldType.SingleSelect) {
+                if(typeof value !== 'string') return true;
+                if(!field.options.includes(value)) return true;
+            }
+            return false;
+        })
+
+        if(invalidFields.length > 0) {
+            return {
+                error: 'Invalid fields',
+                invalidFields: invalidFields.map(field => field.id)
+            }
+        }
+
+        return await this.prismaService.response.create({
+            data: {
+                formId: formId,
+                data: JSON.stringify(body)
+            }
+        })
+    }
+
+    async getResponses({formId, userId}: {formId: string, userId: string}){
+        const form = await this.prismaService.form.findUnique({
+            where: {
+                id: formId,
+                userId: userId
+            }
+        })
+
+        if(!form) return UnauthorizedException
+
+        const responses = await this.prismaService.response.findMany({
+            where: {
+                formId
+            }
+        })
+
+
+        return responses ?? []
     }
 }
 

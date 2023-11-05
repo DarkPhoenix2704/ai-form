@@ -26,16 +26,20 @@ export class FormController {
     }
 
     @Get('/:formId')
-    @UseGuards(AuthGuard('jwt'))
-    async getForm(@AuthUser() user: User, @Param('formId') formId: string) {
+    async getForm(@Param('formId') formId: string) {
         return this.formService.getForm({
-            userId: user.uid,
             formId
         })
 
     }
 
-
+    @Post('/:formId/submit')
+    async submitForm(@Param('formId') formId: string, @Body() body: any) {
+        return this.formService.submitForm({
+            formId,
+            body
+        })
+    }
 
     @Post('/:formId')
     @UseGuards(AuthGuard('jwt'))
@@ -44,6 +48,15 @@ export class FormController {
             userId: user.uid,
             formId: formId,
             fieldInfo
+        })
+    }
+
+    @Get('/:formId/response')
+    @UseGuards(AuthGuard('jwt'))
+    async getResponse(@AuthUser() user: User, @Param('formId') formId: string) {
+        return this.formService.getResponses({
+            userId: user.uid,
+            formId: formId
         })
     }
 }

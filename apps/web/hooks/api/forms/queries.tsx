@@ -41,3 +41,24 @@ export const useUpdateField = ({ formId }: { formId: string }) => {
     },
   });
 };
+
+export const useSubmitForm = ({ formId }: { formId: string }) => {
+  return useMutation({
+    mutationKey: ['forms'],
+    mutationFn: async (form: any) => {
+      const { data } = await apiHandler.post(`/form/${formId}/submit`, form);
+      return data;
+    },
+  });
+};
+
+export const useResponses = ({ formId }: { formId: string }) => {
+  return useQuery({
+    queryKey: ['forms'],
+    queryFn: async () => {
+      const { data } = await apiHandler.get(`/form/${formId}/response`);
+
+      return data;
+    },
+  });
+};
