@@ -21,6 +21,13 @@ This project's user-friendly interface and streamlined form generation process w
 # How it Works ?
 
 # Explaining the working of project
+Our AI-Powered Form Generator is designed to make form creation a breeze. The process begins when you provide a use case as a prompt, detailing the purpose of the form and the data you need to collect. The AI model then goes to work, identifying the necessary data fields, generating corresponding labels and placeholders, and even determining which fields should be marked as mandatory.
+
+Once the AI has this information, it leverages its extensive training data to produce a draft of the form. This draft includes sections, questions, and response formats tailored to your specific use case. But here's where you retain full control – our user-friendly interface allows you to review and customize the generated form. You can add, remove, or edit questions and sections to align the form perfectly with your requirements.
+
+When you're satisfied with the form's content and structure, you can finalize it. The AI-Powered Form Generator provides you with the completed form in a downloadable format, such as a PDF or an editable document. Now, you're all set to use the form for data collection, whether it's for surveys, registrations, feedback, or any other data-gathering activities.
+
+In summary, our AI-Powered Form Generator streamlines the entire form creation process, from prompt to customization and finalization, ensuring that you can easily create productive forms that meet your specific needs.
 
 # Embed video of project demo
 
