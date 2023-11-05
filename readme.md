@@ -16,7 +16,7 @@ This project's user-friendly interface and streamlined form generation process w
 
 # Link to Project
 
-# Embed the live link of project
+[# Embed the live link of project](https://www.loom.com/share/62c08294cb0744fea5ced8c870eaca2d?sid=fde45d85-117f-4479-8749-6f2bdb0d4e10)
 
 # How it Works ?
 
@@ -30,19 +30,19 @@ When you're satisfied with the form's content and structure, you can finalize it
 In summary, our AI-Powered Form Generator streamlines the entire form creation process, from prompt to customization and finalization, ensuring that you can easily create productive forms that meet your specific needs.
 
 # Embed video of project demo
+https://www.loom.com/share/62c08294cb0744fea5ced8c870eaca2d?sid=fde45d85-117f-4479-8749-6f2bdb0d4e10
 
 # Technologies used : AI,Web Development
 
 # List out tech stacks you have used :JavaScript,TypeScript
 
-# How to configure
-
-# Instructions for setting up project
-
 # How to Run
 
-Instructions for running
+docker-compose up -d
 
-Other Links
+yarn install
+cd apps/api
+yarn dev
 
-Provide any other links ( for eg. Wireframe , UI )
+cd apps/web
+yarn dev
