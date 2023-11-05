@@ -7,6 +7,7 @@ import { Button } from '@nextui-org/react';
 const Form = () => {
   const router = useRouter();
   const formId: string = router.query.id as string;
+  const [response, setResponse] = useState({});
   const form = useForm({ formId });
 
   const submitForm = useSubmitForm({ formId });
