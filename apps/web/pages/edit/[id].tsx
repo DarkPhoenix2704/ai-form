@@ -49,10 +49,9 @@ const EditForm: NextPageWithLayout = () => {
 
   useEffect(() => {
     form.refetch();
-    responses.refetch();
-  }, [form, responses]);
+  }, [form]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (!responses.data) return;
     if (!responses.data.length) return;
     const json = responses.data.map((res) => {
@@ -62,7 +61,7 @@ const EditForm: NextPageWithLayout = () => {
     console.log(json);
 
     setJsonRes(json);
-  }, []);
+  }, []); */
 
   return (
     <div className="flex flex-col w-full">
@@ -78,7 +77,7 @@ const EditForm: NextPageWithLayout = () => {
                 });
               }}
             >
-              New Field
+              Share Form
             </Button>
           </div>
           <div className="flex w-full">
@@ -102,9 +101,9 @@ const EditForm: NextPageWithLayout = () => {
                       }}
                     />
                   </div>
-                  <div>
-                    <label>Field Type</label>
+                  <div className="py-1">
                     <Select
+                      label="Field Type"
                       value={activeField.type ?? ''}
                       isRequired
                       onChange={(e) => {
@@ -156,6 +155,7 @@ const EditForm: NextPageWithLayout = () => {
                     />
                   </div>
                   <Button
+                    color="primary"
                     onClick={async () => {
                       await updateField.mutateAsync(activeField as Field);
                       await form.refetch();
@@ -164,11 +164,23 @@ const EditForm: NextPageWithLayout = () => {
                   >
                     Save Field
                   </Button>
+                  <Button
+                    className="w-full"
+                    color="danger"
+                    variant="solid"
+                    onClick={() => {
+                      setActiveField(null);
+                    }}
+                  >
+                    Cancel
+                  </Button>
                 </div>
               ) : (
                 <>
                   Select a Field to edit or <br />
                   <Button
+                    className="w-full"
+                    color="primary"
                     variant="solid"
                     onClick={() => {
                       setActiveField({
@@ -184,8 +196,10 @@ const EditForm: NextPageWithLayout = () => {
             </div>
             <div className="w-2/3 px-16">
               {form.data && (
-                <>
-                  <h1 className="text-2xl font-semibold">{form.data.title}</h1>
+                <div>
+                  <h1 className="text-2xl pt-2 font-semibold">
+                    {form.data.title}
+                  </h1>
                   <p>{form.data.description}</p>
                   {form.data.fields &&
                     form.data.fields.map((field) => {
@@ -212,13 +226,13 @@ const EditForm: NextPageWithLayout = () => {
                         </div>
                       );
                     })}
-                </>
+                </div>
               )}
             </div>
           </div>
         </Tab>
         <Tab key="table" title="View Response">
-          <Table>
+          {/* <Table>
             <TableHeader>
               {form.data && form.data.fields ? (
                 form.data?.fields.map((e) => {
@@ -239,7 +253,7 @@ const EditForm: NextPageWithLayout = () => {
                 <></>
               )}
             </TableBody>
-          </Table>
+          </Table> */}
         </Tab>
       </Tabs>
     </div>
