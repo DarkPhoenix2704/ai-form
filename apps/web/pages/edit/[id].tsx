@@ -70,11 +70,10 @@ const EditForm: NextPageWithLayout = () => {
           <div className="w-full px-8 flex justify-between py-8 bg-blue-50">
             <h1 className="text-xl">{form.data ? form.data.title : ''}</h1>
             <Button
+              color="primary"
+              variant="solid"
               onClick={() => {
-                setActiveField({
-                  title: 'New Field',
-                  type: FieldTypes[0],
-                });
+                navigator.clipboard.writeText(`localhost:3000/form/${formId}`);
               }}
             >
               Share Form
@@ -207,7 +206,7 @@ const EditForm: NextPageWithLayout = () => {
                         <div
                           className={`px-1 w-[25rem] py-2 ${
                             activeField && activeField.id === field.id
-                              ? ' border-2 rounded-md border-blue-500'
+                              ? ' border-2 bg-blue-50 rounded-md border-blue-500'
                               : ''
                           }}`}
                           onClick={() => {

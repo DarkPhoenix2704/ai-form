@@ -33,13 +33,13 @@ const IndexPage: NextPageWithLayout = () => {
   }, [router]);
 
   return (
-    <div className="flex flex-col px-16 py-16 w-full h-full">
+    <div className="flex flex-col bg-[#f9f9fa] px-16 py-16 w-full h-full">
       <div className="flex w-full gap-1">
         <Button color="primary" onClick={onOpen}>
           Create new Form
         </Button>
       </div>
-      <div className="flex mt-2 gap-1 flex-col">
+      <div className="flex mt-2 bg-white gap-1 flex-col">
         {forms.data && forms.data.length === 0 && (
           <div className="flex flex-col h-[400px] items-center justify-center">
             <h1 className="text-2xl">No Forms Found</h1>
