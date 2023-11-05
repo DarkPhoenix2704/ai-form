@@ -1,4 +1,4 @@
-# {AI Powered Form Generator} - Make a Ton 5.0
+# AI Powered Form Generator - Make a Ton 5.0
 
 Introducing our project: AI-Powered Form Generator
 
@@ -8,31 +8,31 @@ Our AI-Powered Form Generator is here to assist users, making the task of form c
 
 This project's user-friendly interface and streamlined form generation process will significantly facilitate marketing and data collection efforts. By harnessing the power of our AI-Powered Form Generator, you can effortlessly create productive forms, ultimately simplifying the data collection process.
 
-Team Members
+# Team Members
 1. [Anbarasu N](https://github.com/DarkPhoenix2704)
 2. [Dany Roby](https://github.com/danyroby)
 3. [Ameesha Arackal](https://github.com/AMEESHAARACKAL)
 4. [Sona Susan Eldhose](https://github.com/Sonasusan111)
 
-Link to Project
+# Link to Project
 
-Embed the live link of project
+# Embed the live link of project
 
-How it Works ?
+# How it Works ?
 
-Explaining the working of project
+# Explaining the working of project
 
-Embed video of project demo
+# Embed video of project demo
 
-Technologies used : AI,Web Development
+# Technologies used : AI,Web Development
 
-List out tech stacks you have used :JavaScript,TypeScript
+# List out tech stacks you have used :JavaScript,TypeScript
 
-How to configure
+# How to configure
 
-Instructions for setting up project
+# Instructions for setting up project
 
-How to Run
+# How to Run
 
 Instructions for running
 
