@@ -32,9 +32,11 @@ In summary, our AI-Powered Form Generator streamlines the entire form creation p
 # Embed video of project demo
 https://www.loom.com/share/62c08294cb0744fea5ced8c870eaca2d?sid=fde45d85-117f-4479-8749-6f2bdb0d4e10
 
-# Technologies used : AI,Web Development
+# Technologies used : 
+AI,Web Development
 
-# List out tech stacks you have used :JavaScript,TypeScript
+# List out tech stacks you have used :
+JavaScript,TypeScript
 
 # How to Run
 
