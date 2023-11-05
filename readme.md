@@ -18,9 +18,9 @@ Explaining the working of project
 
 Embed video of project demo
 
-Technologies used
+Technologies used : AI,Web Development
 
-List out tech stacks you have used
+List out tech stacks you have used :JavaScript,TypeScript
 
 How to configure
 
